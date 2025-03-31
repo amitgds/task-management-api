@@ -62,7 +62,7 @@ You can find the complete API documentation on Postman at the following URL:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-repo/task-management-api.git
+git clone https://github.com/amitgds/task-management-api.git
 cd task-management-api
 ```
 
