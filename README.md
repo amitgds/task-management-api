@@ -7,12 +7,20 @@ This is a RESTful API for managing tasks, built using Node.js, Express, and MySQ
 ## Features
 
 - **CRUD Operations**: Create, Read, Update, and Delete tasks.
+
 - **Task Data Structure**:
+  
   - `task_id`: Auto-generated unique identifier.
   - `title`: String.
   - `description`: String.
   - `due_date`: Date/Time.
   - `status`: Enum (`pending`, `in-progress`, `completed`).
+  - `assigned_user_name`: String.
+  - `category`: String.
+  - `task_comment`: String.
+  - `created_at`: Date/Time.
+  - `updated_at`: Date/Time.
+    
 - **Validation**: Input validation using `Joi`.
 - **Database**: MySQL for data persistence.
 - **Rate Limiting**: Prevent abuse of API endpoints.
@@ -88,13 +96,18 @@ PORT=3000
    ```
 4. Create the `tasks` table:
    ```sql
-   CREATE TABLE tasks (
-       task_id INT AUTO_INCREMENT PRIMARY KEY,
-       title VARCHAR(255) NOT NULL,
-       description TEXT,
-       due_date DATETIME,
-       status ENUM('pending', 'in-progress', 'completed') DEFAULT 'pending'
-   );
+CREATE TABLE `task` (
+  `task_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `due_date` datetime NOT NULL,
+  `status` enum('pending','in-progress','completed') NOT NULL,
+  `assigned_user_name` text DEFAULT NULL,
+  `category` text DEFAULT NULL,
+  `task_comment` text DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
    ```
 5. Import the Database
     Open your MySQL client or terminal.
